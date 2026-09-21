@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">triplan — 친구들이 함께 결정하는 여행 플래너</title>
+  <desc id="desc">단톡방 대화에서 AI A/B 일정과 장소별 투표를 거쳐 최종 일정으로 이어지는 서비스 흐름</desc>
+  <rect width="1200" height="400" rx="24" fill="#102b29"/>
+  <circle cx="1120" cy="30" r="220" fill="#173b36"/>
+  <circle cx="1120" cy="30" r="150" fill="none" stroke="#2b5148" stroke-width="2"/>
+  <g font-family="Segoe UI, Malgun Gothic, sans-serif">
+    <text x="56" y="57" font-size="14" letter-spacing="4" fill="#a8c8b7">TRAVEL · TOGETHER</text>
+    <text x="52" y="145" font-size="76" font-weight="700" fill="#f5f3e9">triplan<tspan fill="#bcec80">.</tspan></text>
+    <text x="56" y="192" font-size="26" fill="#e0e9dd">친구들이 함께 결정하는 여행 플래너</text>
+    <g transform="translate(56 260)">
+      <rect width="235" height="82" rx="14" fill="#22433d"/>
+      <text x="20" y="29" font-size="12" fill="#bcec80">01 / INPUT</text>
+      <text x="20" y="59" font-size="20" fill="#ffffff">단톡방 대화</text>
+      <path d="M249 41h26m-8-7 8 7-8 7" fill="none" stroke="#9ab3a3" stroke-width="2"/>
+      <rect x="288" width="235" height="82" rx="14" fill="#22433d"/>
+      <text x="308" y="29" font-size="12" fill="#bcec80">02 / GENERATE</text>
+      <text x="308" y="59" font-size="20" fill="#ffffff">AI A/B 일정</text>
+      <path d="M537 41h26m-8-7 8 7-8 7" fill="none" stroke="#9ab3a3" stroke-width="2"/>
+      <rect x="576" width="235" height="82" rx="14" fill="#22433d"/>
+      <text x="596" y="29" font-size="12" fill="#bcec80">03 / VOTE</text>
+      <text x="596" y="59" font-size="20" fill="#ffffff">장소별 투표</text>
+      <path d="M825 41h26m-8-7 8 7-8 7" fill="none" stroke="#9ab3a3" stroke-width="2"/>
+      <rect x="864" width="224" height="82" rx="14" fill="#bcec80"/>
+      <text x="884" y="29" font-size="12" fill="#244b36">04 / DECIDE</text>
+      <text x="884" y="59" font-size="20" font-weight="700" fill="#102b29">최종 여행 일정</text>
+    </g>
+  </g>
+</svg>
