@@ -1,8 +1,8 @@
-# 문석용의 triplan 개발 경험
+# 문석용의 TokTrip 개발 경험
 
 > 단체 대화의 조건을 여행 선택지로 바꾸고, 친구들의 선택을 최종 일정까지 연결했습니다.
 
-[프로젝트 소개로 돌아가기](../README.md)
+[프로젝트 소개로 돌아가기](../README.md) · [공개 코드 근거 읽기](code-evidence.md)
 
 ## 담당 범위와 프로젝트 목표
 
@@ -11,6 +11,8 @@
 기업 과제의 AI 여행 플래너 요구사항을 바탕으로, 단톡방 대화 내보내기를 활용하는 방향을 제안했습니다. **여러 사람의 의견을 입력받고, 그 사람들이 최종 일정 형성에도 참여하게 하자**는 것이 기획의 중심이었습니다.
 
 개발에는 AI 도구와 멘토 피드백을 활용했습니다. 제 역할은 기능의 목표를 정하고, 생성된 코드와 결과를 실제 흐름에서 확인하며, 의도와 다른 동작을 찾아 수정·통합하는 것이었습니다.
+
+<a id="case-ai"></a>
 
 ## 사례 1. AI가 만든 JSON을 실제 여행 일정으로 연결하기
 
@@ -47,7 +49,9 @@
 
 실패 대응을 추가한다고 모든 입력의 품질이 보장되지는 않았습니다. 특히 실제 긴 대화에서는 제약 누락과 상충 의견 처리가 어려웠고, 준비된 지역별 대체 후보는 다양성을 제한했습니다. 다음 개선은 무조건 호출 단계를 늘리는 것보다 **실패 입력의 어느 단계에서 정보가 손실되는지 확인하고, 제약을 보존하는 전처리·평가를 마련하는 것**입니다.
 
-**근거 코드:** [AiGenerationService](https://github.com/sku2026-triplan-dev/triplan-backend/blob/V3.2/triplan/src/main/java/com/triplan/triplan/service/AiGenerationService.java) · [PromptTemplates](https://github.com/sku2026-triplan-dev/triplan-backend/blob/V3.2/triplan/src/main/java/com/triplan/triplan/infra/PromptTemplates.java) · [PlaceValidationService](https://github.com/sku2026-triplan-dev/triplan-backend/blob/V3.2/triplan/src/main/java/com/triplan/triplan/service/PlaceValidationService.java)
+**공개 코드 근거:** [A/B 제외 목록과 검증·보정·대체 흐름](code-evidence.md#ai)
+
+<a id="case-vote"></a>
 
 ## 사례 2. 먼저 경험하고 로그인하도록, 선택은 잃지 않도록
 
@@ -79,7 +83,9 @@ PC에서는 A/B와 지도를 함께 비교하고, 모바일에서는 선택한 �
 
 로그인 전 임시 선택은 해당 브라우저에만 있습니다. 로그인 후 같은 계정으로 제출하면 동일 사용자로 처리하지만, 여러 기기에서 선택을 자동 동기화하는 기능이나 DB 게스트 데이터의 회원 병합 기능은 구현 범위에 포함되지 않습니다. 로그인 전환율 개선은 측정하지 않았습니다.
 
-**근거 코드:** [S3VotePage](https://github.com/sku2026-triplan-dev/triplan-frontend/blob/V3.2/src/pages/S3VotePage.jsx) · [VoteService](https://github.com/sku2026-triplan-dev/triplan-backend/blob/V3.2/triplan/src/main/java/com/triplan/triplan/service/VoteService.java) · [PlanViewLayout](https://github.com/sku2026-triplan-dev/triplan-frontend/blob/V3.2/src/components/PlanViewLayout.jsx)
+**공개 코드 근거:** [로그인 복귀 제출과 재투표 갱신](code-evidence.md#vote)
+
+<a id="case-final"></a>
 
 ## 사례 3. A/B 중 하나를 고르는 결과에서, 장소를 재구성하는 결과로
 
@@ -113,15 +119,15 @@ GET /plans/{uuid}/final
 
 기능을 완성했다고 판단하기 전에, 사용자가 기대한 결과와 실제 출력이 일치하는지 확인해야 한다는 것을 배웠습니다.
 
-**근거 코드:** [PlanService](https://github.com/sku2026-triplan-dev/triplan-backend/blob/V3.2/triplan/src/main/java/com/triplan/triplan/service/PlanService.java) · [FinalPlanAiService](https://github.com/sku2026-triplan-dev/triplan-backend/blob/V3.2/triplan/src/main/java/com/triplan/triplan/service/FinalPlanAiService.java) · [S5ConfirmedPage](https://github.com/sku2026-triplan-dev/triplan-frontend/blob/V3.2/src/pages/S5ConfirmedPage.jsx)
+**공개 코드 근거:** [D안 재구성과 저장 시 상태 재검사](code-evidence.md#final)
 
 ## 범위 판단과 협업
 
-팀 안에는 구현 경험을 넓히려는 관점과 시연의 자연스러운 흐름을 우선하는 관점의 차이가 있었습니다. 개발 참여와 기대 수준의 차이로 어려움을 느낀 시점에는 멘토에게 상황을 공유했습니다.
+실제 대화 입력을 어디까지 지원할지, 제한된 캡스톤 기간에 어떤 흐름을 완성할지 멘토 피드백을 받아 범위를 조정했습니다.
 
 특히 짧고 조건이 명확한 입력도 안정화 중인 상황에서 약 6,800자의 실제 대화가 실패하면서, 어느 수준을 완성 목표로 볼지 고민했습니다. 저는 **목적지와 날짜가 어느 정도 정해진 대화 → 취향 차이를 반영한 A/B → 투표 → 최종 일정**이라는 범위를 설명했고, 멘토는 제한된 캡스톤 기간에서 발표와 수행 경험에 초점을 맞추도록 조언했습니다.
 
-이 과정에서 정한 입력 범위와 품질 기대치를 팀이 명시적으로 공유해야 한다는 점을 배웠습니다. 모든 의견 차이가 해소됐다거나 이후 역할 재분담이 완료됐다고 주장하지 않습니다. 주요 개발·통합과 발표 준비를 이어가 배포·시연까지 마무리한 경험으로 정리합니다.
+이 과정에서 정한 입력 범위와 품질 기대치를 팀이 명시적으로 공유해야 한다는 점을 배웠습니다. 주요 개발·통합과 발표 준비를 이어가 배포·시연까지 마무리한 경험으로 정리합니다.
 
 ## 배포와 직접 확인한 결과
 
