@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vite/
+.vite-demo-cache/
+.env
+.env.*
+!.env.example
+*.log
+

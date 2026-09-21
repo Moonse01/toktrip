@@ -1,0 +1,18 @@
+{
+  "name": "TokTrip",
+  "short_name": "TokTrip",
+  "description": "카톡으로 만드는 우리들의 여행 일정",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+application-local.properties
+application-*.properties
+!application-test.properties
+!application.properties.example
+
+# Java / Gradle
+.gradle/
+build/
+bin/
+out/
+*.class
+
+# Node / Vite
+node_modules/
+dist/
+.vite/
+.vite-demo-cache/
+
+# IDE and operating system
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+

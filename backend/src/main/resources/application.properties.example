@@ -1,0 +1,24 @@
+# Copy required values to environment variables before running the backend.
+SERVER_PORT=8080
+APP_FRONTEND_URL=http://localhost:5174
+CORS_ALLOWED_ORIGINS=http://localhost:5174
+
+DB_URL=jdbc:mysql://localhost:3306/toktrip?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+DB_USERNAME=toktrip
+DB_PASSWORD=replace-me
+
+KAKAO_CLIENT_ID=replace-me
+KAKAO_CLIENT_SECRET=replace-me
+KAKAO_REDIRECT_URI=http://localhost:8080/login/oauth2/code/kakao
+KAKAO_REST_API_KEY=replace-me
+TMAP_API_KEY=replace-me
+OPENAI_API_KEY=replace-me
+JWT_SECRET=replace-this-with-a-long-random-secret-of-at-least-32-bytes
+
+# Optional notification integrations
+SPRING_MAIL_HOST=smtp.example.com
+SPRING_MAIL_USERNAME=replace-me
+SPRING_MAIL_PASSWORD=replace-me
+APP_WEBPUSH_PUBLIC_KEY=replace-me
+APP_WEBPUSH_PRIVATE_KEY=replace-me
+

@@ -10,7 +10,7 @@
 
 [개인 기여와 의사결정](docs/contribution.md) · [공개 코드 근거](docs/code-evidence.md) · [시스템 구조와 구현 범위](docs/architecture.md)
 
-> 최종 서비스명은 **TokTrip**입니다. 개발 당시 이름인 `triplan`은 원본 저장소·패키지·클래스 경로에 남아 있습니다. 이 저장소는 서비스 소개와 개인 개발 경험을 정리한 포트폴리오입니다.
+> 최종 서비스명은 **TokTrip**입니다. 개발 당시 이름인 `triplan`은 패키지·클래스 경로에 남아 있습니다. 이 저장소에는 서비스 문서와 비밀 설정을 제거한 공개용 소스 스냅샷이 함께 있습니다.
 
 ## 어떤 문제를 풀었나요?
 
@@ -40,11 +40,21 @@
 
 [화면 → API → 서비스 → 저장소 연결과 상세 구조 보기](docs/architecture.md)
 
+## 소스 코드
+
+| 경로 | 내용 |
+| :--- | :--- |
+| [`backend/`](backend/) | Spring Boot API, AI 생성·검증, 투표, 최종 일정, 알림 구현과 테스트 |
+| [`frontend/`](frontend/) | React S1~S5 화면, 인증 복귀, 투표·대시보드·확정 일정 흐름 |
+| [`docs/code-evidence.md`](docs/code-evidence.md) | 핵심 코드의 역할과 설계 판단을 함께 읽는 안내서 |
+
+실제 비밀번호와 외부 API 키, 빌드 결과물, IDE 설정, 로그와 기존 비공개 Git 이력은 포함하지 않습니다. 로컬 실행 시 [`backend/src/main/resources/application.properties.example`](backend/src/main/resources/application.properties.example)과 [`frontend/.env.example`](frontend/.env.example)을 참고해 환경 변수를 설정합니다.
+
 ## 결과와 현재 상태
 
 - **개발 당시:** KT Cloud 배포·시연 완료, PC·Android·iOS에서 Web Push 수신 직접 확인.
 - **현재:** 학교 클라우드 지원이 종료되어 상시 체험 서버는 제공하지 않습니다.
-- **검증 기록:** 2026-09-11 점검에 백엔드 테스트 116개 통과·프론트 빌드 성공 기록이 있습니다. 이번 문서 정리에서 재실행한 결과는 아닙니다.
+- **검증 기록:** 공개 스냅샷에서 백엔드 테스트 116개를 다시 실행해 모두 통과했습니다. 프론트는 같은 소스로 2026-09-11 빌드 성공 기록을 확인했으며, 공개본 패키지 재설치는 현재 네트워크 제한으로 완료하지 못했습니다.
 - **남은 과제:** 긴 실제 대화의 조건 보존, 동시 최종 생성 요청의 중복 AI 비용, 프론트 lint 오류. AI 정확도·사용자 만족도 개선률은 측정하지 않았습니다.
 
 ---
