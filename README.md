@@ -4,7 +4,7 @@
 
 **단톡방 대화를 바탕으로 AI가 여행 일정 후보 두 개를 만들고, 친구들의 장소별 선호와 전체 일정에 대한 의견을 모아 최종 일정을 추천하는 서비스입니다.**
 
-대학기업협력형 SW아카데미 **6기(2026.02.02~06.18)**에서 오브젠(주)이 제안한 「AI와 함께하는 통합 여행 플래너」를 선택해 2인 팀에서 TokTrip으로 구체화했습니다. [서경대학교 과정·참여기업 소개](https://sanhak.skuniv.ac.kr/cooperation-center)
+대학기업협력형 SW아카데미 **6기(2026.02.02~06.18)**에서 오브젠(주)이 제안한 「AI와 함께하는 통합 여행 플래너」를 선택해 2인 팀에서 TokTrip으로 구체화했습니다. [서경 SW아카데미 소개](https://swacademy.skuniv.ac.kr/about/#!/greeting)
 
 [개인 기여와 의사결정](docs/contribution.md) · [공개 코드 근거](docs/code-evidence.md) · [시스템 구조와 구현 범위](docs/architecture.md)
 
@@ -21,6 +21,8 @@
 | 대화 파일이나 텍스트와 추가 요청 입력 | 지도에서 일정 후보 두 개 비교 | 장소별 투표와 전체 일정에 대한 의견 남기기 | 여행을 만든 사람이 생성을 요청하면 투표와 전체 의견을 바탕으로 최종 일정 추천 |
 
 호스트는 생성 결과를 확인한 뒤 공유할 때, 참여자는 일정을 보고 선택한 뒤 제출할 때 로그인하도록 흐름을 구성했습니다.
+
+![두 일정 후보를 지도와 함께 비교하며 장소마다 투표하고, 아래에서 전체 일정에 대한 의견을 남기는 화면](assets/screen-vote-pc.png)
 
 ## 개인 기여
 
@@ -55,6 +57,8 @@
 실제 비밀번호와 외부 API 키, 빌드 결과물, IDE 설정, 로그와 기존 비공개 Git 이력은 포함하지 않습니다. 로컬 실행 시 [`backend/src/main/resources/application.properties.example`](backend/src/main/resources/application.properties.example)과 [`frontend/.env.example`](frontend/.env.example)을 참고해 환경 변수를 설정합니다.
 
 ## 결과와 현재 상태
+
+![투표와 의견을 바탕으로 추천된 최종 일정과 추천 이유, 지도 동선 화면](assets/screen-final-pc.png)
 
 - **개발 당시:** KT Cloud 배포·시연 완료, PC·Android·iOS에서 Web Push 수신 직접 확인.
 - **현재:** 학교 클라우드 지원이 종료되어 상시 체험 서버는 제공하지 않습니다.
