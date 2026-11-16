@@ -21,7 +21,7 @@ flowchart LR
 | :--- | :--- | :--- | :--- |
 | 대화·요청 입력, A/B 생성 | `PlanNewPage.jsx` | `PlanService.createPlan` → `AiGenerationService.generateAsync` | `PLANS`, OpenAI, 카카오 장소 검색 |
 | A/B 확인·공유 | `S2ResultPage.jsx` | `PlanService.getPlan`, 후보 조회 | `PLAN_CANDIDATES`, `PLACES`, 카카오맵 |
-| 장소별 투표·순서 선호 | `S3VotePage.jsx` | `VoteService.saveBatch` | `VOTES_FEEDBACKS`, `PLAN_PARTICIPANTS` |
+| 장소별 투표·순서 선호 저장 | `S3VotePage.jsx` | `VoteService.saveBatch` | `VOTES_FEEDBACKS`, `PLAN_PARTICIPANTS` |
 | 통계 확인·D안 생성 | `S4DashboardPage.jsx` | `DashboardService.getDashboard`, `PlanService.finalizePlan` | 기존 후보·투표 조회, OpenAI |
 | 최종 일정 조회 | `S5ConfirmedPage.jsx` | `PlanService.getFinalCandidate` | `PLAN_CANDIDATES.is_final` |
 
@@ -56,7 +56,7 @@ GET /plans/{uuid}/final
   저장된 D안 조회
 ```
 
-최종안은 A/B 후보 중 하나를 통째로 선택하지 않고, AI가 기존 장소의 `source_place_id`를 선택해 재구성합니다. 저장 시 잠금과 상태 재검사를 수행하지만, 두 요청이 저장 전에 AI를 각각 호출하는 중복 비용 가능성은 남아 있습니다.
+최종안 생성에는 기존 후보 장소, 장소별 투표 요약, 댓글을 사용합니다. AI가 기존 장소의 `source_place_id`를 선택하면 서버가 해당 장소 데이터로 일정을 구성합니다. 방문 순서 선호는 투표와 함께 저장하고 대시보드에 표시합니다. 저장 시 잠금과 상태 재검사를 수행하지만, 두 요청이 저장 전에 AI를 각각 호출하는 중복 비용 가능성은 남아 있습니다.
 
 ## 확인한 범위와 남은 과제
 
